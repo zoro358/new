@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="tourism.css" />
+    <style>
+      div[id^="section"] {
+        display: none; /* Hide all sections by default */
+      }
+      #sectionHome {
+        display: block; /* Show the home section initially */
+      }
+      .bg-container {
+        background-image: url("https://img.freepik.com/free-photo/view-ready-eat-delicious-meal-go_23-2151431768.jpg?semt=ais_incoming");
+        height: 100vh;
+        background-size: cover;
+      }
+      .tourism-card {
+        text-align: center;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        padding: 5px;
+        margin-top: 10px;
+      }
+      .button {
+        color: black;
+        background-color: rgb(38, 222, 38);
+        width: 138px;
+        height: 36px;
+        border-width: 0px;
+        border-radius: 20px;
+      }
+      .popup {
+        display: none; 
+        position: fixed;
+        top: 7%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 20px;
+        z-index: 9999; 
+      }
+    
+      .close-btn {
+        color: #bd3434;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+    
+      .close-btn:hover,
+      .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .main-heading {
+        font-family: "Roboto ";
+        font-weight: bold;
+      }
+      .paragraph {
+        font-family: "Roboto";
+        font-size: 18px;
+      }
+      .arrow {
+        display: inline-block;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        border-left: 3px solid #007BFF;
+        border-bottom: 3px solid #007BFF;
+        transform: rotate(43deg);
+        animation: bounce 1s infinite;
+      }
+      @keyframes bounce {
+        0%, 100% { transform: rotate(40deg) translateY(0); }
+        50% { transform: rotate(40deg) translateY(10px); }
+      }
+      .favourite-places-bg-container {
+        background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+        height: 100%;
+        background-size: 100%;
+        padding: 24px;
+      }
+      .favourite-places-heading {
+        color: #00796b;
+        font-family: "Abril Fatface", serif;
+        font-size: 28px;
+        text-align: center;
+        border-radius: 25px;
+        padding: 10px;
+        font-weight: bold;
+        background-color: white;
+      }
+      .favourite-place-card-container {
+        background-color: white;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 15px;
+      }
+      .favourite-place-card-heading {
+        color: #00796b;
+        font-family: "Roboto";
+        font-size: 23px;
+        font-weight: bold;
+      }
+      .favourite-place-card-description {
+        color: #616161;
+        font-family: "Roboto";
+        font-size: 15px;
+      }
+      .favourite-place-card-image {
+        width: 80px;
+        height: 100px;
+        margin-left: auto;
+      }
+      .card{
+      width: 150px;
+      height: 100px;
+      margin-left: auto;
+      }
+      .favourite-place-card-text-container {
+        margin-right: 15px;
+      }
+      .detailed-view-bg-container {
+        background: linear-gradient(120deg, #ff9a9e, #fad0c4 50%, #fbc2eb);
+        background-size: cover;
+        padding:30px;
+      }
+      .detailed-view-heading {
+        color: Black;
+        font-family: "Abri Fatface", serif;
+        font-size: 28px;
+        font-weight: bold;
+        padding: 24px;
+        text-align: center;
+      }
+      .detailed-view-card-container {
+        background-color: lightcyan;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        margin: 24px;
+      }
+      .detailed-view-card-heading {
+        color: #black;
+        font-family: "Roboto";
+        font-size: 23px;
+        font-weight: bold;
+      }
+      .detailed-view-card-description {
+        color: #6c6b70;
+        font-family: "Roboto";
+        font-size: 18px;
+      }
+      .detailed-view-card-text-container {
+        padding: 16px;
+      }
+    </style>
+  </head>
+  <body>
+
+<div id="sectionHome">
+  <div class="bg-container d-flex flex-column justify-content-end">
+    <div class="tourism-card">
+      <h1 class="main-heading">"Famous India Foods"</h1>
+      <p class="paragraph">Click on the button below to view famous Indian foods</p>
+      <button class="button" onclick="display('sectionFavouritePlaces'); showSuccessPopup();"> 
+        Click Here
+      </button>
+      <p class="arrow"></p> 
+    </div>
+  </div>
+</div>
+
+<div id="popup" class="popup">
+  <span class="close-btn" onclick="closePopup()">&times;</span>
+  <h3>Success!</h3>
+  <p>Hey You have successfully enterted to this page!</p>
+</div>
+
+
+    <div id="sectionFavouritePlaces">
+      <div class="favourite-places-bg-container">
+        <h1 class="favourite-places-heading">-: Famous Foods In India State Wise :-</h1>
+        <div
+          class="favourite-place-card-container d-flex flex-row"
+          onclick="display('sectionBiryaniDetailedView')"
+        >
+          <div>
+            <h1 class="favourite-place-card-heading">Biryani</h1>
+            <p class="favourite-place-card-description">
+                A dish made with meat or poultry, cooked in an earthen pot and sealed with dough. Hyderabadi biryani is a well-known variation of this dish
+
+            </p>
+          </div>
+          <img
+            src="https://assets.gqindia.com/photos/5ddcbd00836a7f0008bf48a4/4:3/w_1439,h_1079,c_limit/biryani-gurugram.jpg"
+            class="favourite-place-card-image"
+          />
+        </div>
+        <div
+          class="favourite-place-card-container d-flex flex-row"
+          onclick="display('sectionPongalDetailedView')"
+        >
+          <div>
+            <h1 class="favourite-place-card-heading">Pongal</h1>
+            <p class="favourite-place-card-description">
+                Pongal is a Hindu harvest festival celebrated in Tamil Nadu and other parts of South India. It is a time to give thanks to the Sun God, Mother Nature, and farm animals for a bountiful harvest.
+            </p>
+          </div>
+          <img
+            src="https://t3.ftcdn.net/jpg/09/47/78/88/360_F_947788861_jTKFtYXCiXJ53n8q5ReZj0KsOvCY06YK.jpg"
+            class="favourite-place-card-image"
+          />
+        </div>
+        <div class="favourite-place-card-container d-flex flex-row" 
+            onclick="display('sectionAppamDetailedView')">
+          <div>
+            <h1 class="favourite-place-card-heading">Appam</h1>
+            <p class="favourite-place-card-description">
+              Appam is a popular breakfast dish in South India and is often served with a topping like an egg or with a vegetable stew.
+            </p>
+          </div>
+          <img
+            src="https://t4.ftcdn.net/jpg/04/10/55/63/360_F_410556335_6p6Jz5nq47Xh46ohiKHQzXfUIiNF1Xny.jpg"
+            class="favourite-place-card-image"
+          />
+        </div>
+
+        <div class="favourite-place-card-container d-flex flex-row" 
+        onclick="display('sectionVada-PavDetailedView')">
+      <div>
+        <h1 class="favourite-place-card-heading">Vada-Pav</h1>
+        <p class="favourite-place-card-description">
+            Vada pav is a popular Indian street food made of a deep-fried potato patty in a bread bun, served with chutneys and sometimes a green chili. It's often called the "Indian burger".
+        </p>
+      </div>
+      <img
+        src="https://t3.ftcdn.net/jpg/01/16/14/14/360_F_116141457_gj7IMZ5ll0j1uGqXQ6lXjF4vnpgL5tkc.jpg"
+        class="favourite-place-card-image"
+      />
+    </div>
+
+        <div class="favourite-place-card-container d-flex flex-row" 
+             onclick="display('sectionBisiBeleBathDetailedView')">
+          <div>
+            <h1 class="favourite-place-card-heading"> Bisi Bele Bath</h1>
+            <p class="favourite-place-card-description">
+                Bisi Bele Bath- is a spicy rice based dish. It is originated in Mysore, Karnataka and from there spread across South India.
+            </p>
+          </div>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bisi_Bele_Bath_%28Bisibelebath%29.JPG/1280px-Bisi_Bele_Bath_%28Bisibelebath%29.JPG"
+            class="favourite-place-card-image"
+          />
+    </div>
+    <div class="favourite-place-card-container d-flex flex-row" 
+    onclick="display('sectionGoaFishCurryDetailedView')">
+ <div>
+   <h1 class="favourite-place-card-heading">Goa Fish Curry</h1>
+   <p class="favourite-place-card-description">
+    Goa is known for many famous dishes, including fish curry, pork vindaloo, chicken cafreal, and prawn balchao. Goa's cuisine is a mix of Portuguese, Indian, and other influences.
+   </p>
+ </div>
+ <img
+   src="https://media.istockphoto.com/id/1264335635/photo/close-up-image-of-metal-tongs-turning-crispy-fried-fish-in-a-frying-pan-goan-fish-curry-recipe.jpg?s=612x612&w=0&k=20&c=IAgFB3ddm7GKzLGvg5MyuAb32MrgisqtVMjy2H0hIVQ="
+   class="favourite-place-card-image"
+ />
+</div>  
+
+    
+        
+        <div class="favourite-place-card-container d-flex flex-row" 
+             onclick="display('sectionMikkiKiRotiDetailedView')">
+          <div>
+            <h1 class="favourite-place-card-heading">Makki Ki roti</h1>
+            <p class="favourite-place-card-description">
+                Goa is known for many famous dishes, including fish curry, pork vindaloo, chicken cafreal, and prawn balchao. Goa's cuisine is a mix of Portuguese, Indian, and other influences.
+            </p>
+          </div>
+          <img
+            src="https://pipingpotcurry.com/wp-content/uploads/2024/01/Makki-Roti.-Maize-flour-bread-Piping-Pot-Curry.jpg"
+            class="favourite-place-card-image"
+          />
+        </div>
+        <button class="btn btn-dark" onclick="display('sectionHome')">Back</button>
+      </div>
+    </div>
+
+    <div id="sectionBiryaniDetailedView">
+        <div class="detailed-view-bg-container">
+          <h1 class="detailed-view-heading">Biryani Detail Information</h1>
+          <div class="detailed-view-card-container">
+            <div
+              id="BiryaniCarousel"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#BiryaniCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#BiryaniCarousel" data-slide-to="1"></li>
+                <li data-target="#BiryaniCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://assets.gqindia.com/photos/5ddcbd00836a7f0008bf48a4/4:3/w_1439,h_1079,c_limit/biryani-gurugram.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExejh2YWE0M3kzdHQ1MnJlYzNwNWN2YjI2bmlrNGdhNHlieWZhM3lxdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QKiJrlLoMUQR3gUhFP/giphy.gif"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                    <iframe width="100%" height="415" src="https://www.youtube.com/embed/5vLepMMbD0Y?si=mqJ5H_4TIYMVErht" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#varanasiTempleCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#BiryaniCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <h1 class="detailed-view-card-heading"> Hyderabadi Biryani</h1>
+              <p class="detailed-view-card-description">
+                Hyderabadi biryani (also known as Hyderabadi dum biryani) is a style of biryani originating from Hyderabad, India made with basmati rice and meat (mostly goat meat). Originating in the kitchens of the Nizam of Hyderabad, it combines elements of Hyderabadi and Mughlai cuisines. Hyderabad biryani is a key dish in Hyderabadi cuisine and it is so famous that the dish is considered synonymous with the city of Hyderabad. <br>
+                Hyderabad was conquered by the Mughals in the 1630s, and ruled by its Nizams. Mughlai culinary traditions joined with local traditions to create Hyderabadi cuisine.[1] : 92  Local folklore attributes the creation of Hyderabadi biryani to the chef of the first Nizam, Nizam-ul-Mulk, Asaf Jah I, in the mid-18th century, during a hunting expedition.[2][3] In 1857, when the Mughal Empire declined in Delhi, Hyderabad emerged as the center of South Asian culture,[4][5] resulting in a mix of innovations in Hyderabadi biryani.
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-dark" onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+        </div>
+      </div>
+
+      <div id="sectionPongalDetailedView">
+        <div class="detailed-view-bg-container">
+          <h1 class="detailed-view-heading">Pongal Detail Information</h1>
+          <div class="detailed-view-card-container">
+            <div
+              id="PongalCarousel"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#PongalCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#PongalCarousel" data-slide-to="1"></li>
+                <li data-target="#PongalCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://t3.ftcdn.net/jpg/09/47/78/88/360_F_947788861_jTKFtYXCiXJ53n8q5ReZj0KsOvCY06YK.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://static.toiimg.com/thumb/width-400,resizemode-4,msid-73203096/73203096.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                    <iframe width="100%" height="415" src="https://www.youtube.com/embed/VRY020cSJ7o?si=lezvkVH0N7fV_o9E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#PongalCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#PongalCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <h1 class="detailed-view-card-heading"> Pongal </h1>
+              <p class="detailed-view-card-description">
+                Pongal (lit. 'to boil over') is a South Indian and Sri Lankan dish of rice cooked in boiling milk.[1][2] Its preparation is the main custom associated with the Pongal festival. It is also eaten as a breakfast food.[3] A part of Tamil cuisine, varieties include venn (hot) pongal, sakkarai (sweet) pongal, kozhi (chicken) pongal, and sanyasi pongal. It has been described as "very dear to (the) Tamil people. <br>
+                Pongal is associated with the Pongal festival, whose name means "to boil over" or "overflow." The festival thanks the Sun deity for the sunlight that makes the rice harvest possible. Therefore, the tradition calls for offering the fresh harvest of rice cooked in boiling milk to the deity.[1] While the pongal is cooking, onlookers sometimes shout with joy, "Pongalo pongal!" ('Let the pongal rise up!').
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-dark" onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+        </div>
+      </div>
+
+      <div id="sectionAppamDetailedView">
+        <div class="detailed-view-bg-container">
+          <h1 class="detailed-view-heading">Appam Detail Information</h1></h1>
+          <div class="detailed-view-card-container">
+            <div
+              id="AppamCarousel"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#AppamCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#AppamCarousel" data-slide-to="1"></li>
+                <li data-target="#AppamCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://t4.ftcdn.net/jpg/04/10/55/63/360_F_410556335_6p6Jz5nq47Xh46ohiKHQzXfUIiNF1Xny.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://mamasecretrecipes.ca/wp-content/uploads/2019/11/Appamposter.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                    <iframe width="100%" height="415" src="https://www.youtube.com/embed/V40jJdhPp2I?si=cY1-vwfRId0D_6r1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#AppamCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#AppamCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <h1 class="detailed-view-card-heading"> Appam</h1>
+              <p class="detailed-view-card-description">
+                An appam or hoppers is a type of thin pancake originating from South India and Sri Lanka. It is made with fermented rice batter and coconut milk, traditionally cooked in an appachatti, a deep pan similar in shape to a wok. It is part of Tamil cuisine and Kerala cuisine found in the Indian states of Tamil Nadu and Kerala, and in Sri Lanka.[1] Appam is most frequently served for breakfast or dinner, often with a topping such as an egg.  <br>
+                Appam is a close relative of dosa. Early dosas were made from rice batter and later black lentils were introduced, and since then black lentils have become an integral component of dosa.[3] The recipe of appam unlike dosa has remained unchanged for centuries.[3] One of the earliest recipes for appam can be found in the elaborately carved recipe on the walls of the Srirangam temple, made to be offered to the deity.
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-dark" onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+        </div>
+      </div>
+
+      <div id="sectionVada-PavDetailedView">
+        <div class="detailed-view-bg-container">
+          <h1 class="detailed-view-heading">Vada Pav Detail Information</h1></h1>
+          <div class="detailed-view-card-container">
+            <div
+              id="Vada-PavCarousel"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#Vada-PavCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#Vada-PavCarousel" data-slide-to="1"></li>
+                <li data-target="#Vada-PavCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://t3.ftcdn.net/jpg/01/16/14/14/360_F_116141457_gj7IMZ5ll0j1uGqXQ6lXjF4vnpgL5tkc.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/fae1c0119146085.6097b9d38a58d.gif"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <iframe width="100%" height="415" src="https://www.youtube.com/embed/LE-58cHgDaw?si=kR8OfGRiFaCfN8B7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#Vada-PavCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#Vada-PavCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <h1 class="detailed-view-card-heading"> Vada-Pav </h1>
+              <p class="detailed-view-card-description">
+                Vada pav, alternatively spelt wada pao, (listenⓘ) is a vegetarian fast food dish native to the Indian state of Maharashtra.[1] The dish consists of a deep-fried potato dumpling placed inside a bread bun (pav) sliced almost in half through the middle. It is generally accompanied with one or more chutneys and a green chili pepper.[2] Although it originated as an affordable street food in Mumbai, it is now served in food stalls and restaurants across India. It is also called Bombay burger[3] in keeping with its origins and its resemblance in physical form to a burger. <br>
+                The most common theory of the vada pav's origin is that it was invented in the erstwhile mill-heartland of Central Mumbai. Ashok Vaidya of Dadar is often credited with starting the first vada pav stall outside Dadar railway station in 1966.[7][8][9]: 34  Some sources credit Sudhakar Mhatre who started his business around the same time.[10] One of the earliest kiosks selling vada pav is said to be Khidki Vada Pav, located in Kalyan. It was started in the late 1960s by the Vaze family, who used to hand out vada pavs from a window (Khidki) of their house facing the road.
+              </P>
+            </div>
+          </div>
+          <button class="btn btn-dark" onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+        </div>
+      </div>
+
+      <div id="sectionBisiBeleBathDetailedView">
+        <div class="detailed-view-bg-container">
+          <h1 class="detailed-view-heading">Bisi Bele Bath Detail Information</h1></h1>
+          <div class="detailed-view-card-container">
+            <div
+              id="BisiBeleBathCarousel"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#BisiBeleBathCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#BisiBeleBathCarousel" data-slide-to="1"></li>
+                <li data-target="#BisiBeleBathCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bisi_Bele_Bath_%28Bisibelebath%29.JPG/1280px-Bisi_Bele_Bath_%28Bisibelebath%29.JPG"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://hebbarskitchen.com/wp-content/uploads/2021/11/bisi-bele-bath-recipe-%EF%80%A7-bisibelabath-recipe-%EF%80%A7-bisibele-bhath-or-bisibele-rice-2-768x1152.jpeg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <iframe width="100%" height="415" src="https://www.youtube.com/embed/1DLAO0Z9QiI?si=pSBS_lrTRw3XQxy_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#BisiBeleBathCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#BisiBeleBathCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <h1 class="detailed-view-card-heading"> Bisi Bele Bath </h1>
+              <p class="detailed-view-card-description">
+                Bisi bele bhath (Kannada: ಬಿಸಿ ಬೇಳೆ ಬಾತ್, romanized: bisi bēl̥e bātu, lit. 'hot lentil [boiled] rice') is a spicy, rice-based dish with origins in the state of Karnataka, India.[1] It is said to have originated in the Mysore Palace. <br>
+                The traditional preparation of this dish is quite elaborate and involves the use of a spicy masala (huliyanna), toor dal (a type of lentil), rice, ghee and vegetables.[5] Spices like nutmeg, asafoetida, curry leaves and tamarind pulp contribute to its unique flavour and taste. Some versions of the dish are prepared with up to thirty ingredients.
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-dark" onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+        </div>
+      </div>
+
+      <div id="sectionGoaFishCurryDetailedView">
+        <div class="detailed-view-bg-container">
+          <h1 class="detailed-view-heading">Goa Fish Curry Detail Information</h1></h1>
+          <div class="detailed-view-card-container">
+            <div
+              id="GoaFishCurryCarousel"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#GoaFishCurryCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#GoaFishCurryCarousel" data-slide-to="1"></li>
+                <li data-target="#GoaFishCurryCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://media.istockphoto.com/id/1264335635/photo/close-up-image-of-metal-tongs-turning-crispy-fried-fish-in-a-frying-pan-goan-fish-curry-recipe.jpg?s=612x612&w=0&k=20&c=IAgFB3ddm7GKzLGvg5MyuAb32MrgisqtVMjy2H0hIVQ="
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://media.tenor.com/O2dt1_56RkQAAAAM/moroccan-fish.gif"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                    <iframe width="100%" height="415" src="https://www.youtube.com/embed/VRY020cSJ7o?si=lezvkVH0N7fV_o9E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#GoaFishCurryCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#GoaFishCurryCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <h1 class="detailed-view-card-heading"> Goa Fish Curry </h1>
+              <p class="detailed-view-card-description">
+
+                This fish curry comes to you by way of Goa, a little pocket of Indian paradise that’s all about the sun, surf, sand and excellent seafood! With a deeply aromatic tomato and coconut based sauce, Goan Fish Curry calls for a good handful of spices but once you start cooking, it’s done in 20 minutes. <br>
+                The tropical climate and beaches of Goa have long since been a magnet for travellers from all over the world, with a reputation in particular for attracting the hippie crowd and British backpackers … and Aussies!.
+              </p>
+              
+            </div>
+          </div>
+          <button class="btn btn-dark" onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+        </div>
+      </div>
+
+      <div id="sectionMikkiKiRotiDetailedView">
+        <div class="detailed-view-bg-container">
+          <h1 class="detailed-view-heading">Mikki Ki Roti Detail Information</h1></h1>
+          <div class="detailed-view-card-container">
+            <div
+              id="MikkiKiRotiCarousel"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#MikkiKiRotiCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#MikkiKiRotiCarousel" data-slide-to="1"></li>
+                <li data-target="#MikkiKiRotiCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="https://pipingpotcurry.com/wp-content/uploads/2024/01/Makki-Roti.-Maize-flour-bread-Piping-Pot-Curry.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="https://media.tenor.com/VeXw3FzovKQAAAAM/roti-indian.gif"
+                    class="d-block w-100"
+                    alt="..."/>
+                  
+                </div>
+                <div class="carousel-item">
+                  <iframe width="100%" height="415" src="https://www.youtube.com/embed/CPrJZeoLtRs?si=rJZTq04PUyQguflC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#MikkiKiRotiCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#MikkiKiRotiCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <h1 class="detailed-view-card-heading"> Makki Ki Roti</h1>
+              <p class="detailed-view-card-description">
+                Makki ki roti also known as makki di roti is a flat unleavened bread made from corn meal (maize flour),[2] primarily eaten in Pakistan, the Jammu region, Himachal Pradesh, Punjab, Haryana, Rajasthan, Uttar Pradesh, and Uttarakhand in North India and Gujarat, Maharashtra in Western India and also in Nepal.[3] Like most rotis in the Indian subcontinent, it is baked on a tava. <br>
+                Makki ki roti is often served with warming winter dishes based on greens (saag), such as sarson ka saag and channa ka saag. In Punjab and neighbouring area it is also eaten with Maah (Urad) daal.[8] Dogras have folk songs that mention Makki di roti.[9] Maize food items are also popular in Rajasthan and one of that is maize roti.[10] In fact, maize is one of the staple diet of Bishnois of Rajasthan and Haryana.[11][12] In Uttar Pradesh, maize roti is also eaten with ghee, butter, jaggery and pickles. In Gujarat, this dish is also known as "Makai No Rotlo".
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-dark" onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+        </div>
+      </div>
+
+      
+  
+      <script>
+        function display(sectionId) {
+          
+          const sections = document.querySelectorAll("div[id^='section']");
+          sections.forEach((section) => {
+            section.style.display = "none";
+          });
+          const selectedSection = document.getElementById(sectionId);
+          if (selectedSection) {
+            selectedSection.style.display = "block";
+          }
+        }
+  
+        document.addEventListener("DOMContentLoaded", () => {
+          display("sectionHome");
+        
+        
+        });
+        function showSuccessPopup() {
+            document.getElementById("popup").style.display = "block";
+          }
+        
+          function closePopup() {
+            document.getElementById("popup").style.display = "none";
+          }
+      </script>
+</body>
+</html>
