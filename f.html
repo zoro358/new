@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Ultra&display=swap');
+
+      div[id^="section"] {
+        display: none; /* Hide all sections by default */
+      }
+      #sectionHome {
+        display: block; /* Show the home section initially */
+      }
+      .bg-container {
+        background-image: url("https://wallpapers.com/images/hd/dark-anime-scenery-wot9wg412s7h8yxa.jpg");
+        height: 100vh;
+        background-size: 100%;
+      }
+      .tourism-card {
+        text-align: center;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        padding: 5px;
+        margin-top: 10px;
+      }
+      .button {
+        font-family: 'Nunito', sans-serif;
+        background-color: rgba(49, 49, 49, 0.2);
+        backdrop-filter: blur(2px);
+        width: 150px;
+        height: 36px;
+        border-width: 2px;
+        color:whitesmoke;
+        border-radius: 20px;
+      }
+      .main-heading {
+        font-family: 'Poppins', sans-serif;
+
+        font-weight: bold;
+        font-size: 30px;
+        color: #f7f6f4;
+      }
+
+      .mai {
+        background-color: rgba(49, 49, 49, 0.2);
+        backdrop-filter: blur(2px);
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 15px;
+        display: inline-block;
+      
+      }
+      .paragraph {
+        font-family: 'Nunito', sans-serif;
+        font-size: 20px;
+        color: #e0e0e0;
+        margin-bottom: 40px;
+        background-color: rgba(22, 22, 22, 0.2);
+        backdrop-filter: blur(2px);
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 15px;
+        display: inline-block;
+      }
+      .favourite-places-bg-container {
+        background-image: url("https://wallpapers.com/images/hd/dark-anime-scenery-wot9wg412s7h8yxa.jpg");
+        height: 100%;
+        background-size: 100%;
+
+       
+        
+      }
+
+
+      
+      .favourite-places-heading {
+        color: #FFFFFF;
+        font-family: 'Poppins', sans-serif;
+        font-size: 25px;
+        text-align: center;
+        padding: 16px;
+        border-radius: 30px;
+        font-weight: bold;
+        
+      }
+      .favourite-place-card-container {
+        background-color: rgba(22, 22, 22, 0.4);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 15px;
+        
+
+        
+      }
+      .favourite-place-card-heading {
+        color: #FFFFFF;
+        font-family: 'Poppins', sans-serif;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); 
+        font-size: 21px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        text-align: left;
+        }
+
+
+      .tex {
+        
+        background-color: rgba(22, 22, 22, 0.4);
+        backdrop-filter: blur(5px);
+        font-family: 'Poppins', sans-serif;
+        font-size: 3px;
+        text-align: center;
+        padding: 16px;
+        margin:  auto;
+        border: 30px;
+        font-weight: bold;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        display: inline-block;
+        }
+
+      
+      .favourite-place-card-description {
+        color: #DADADA;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        text-align: left;
+      }
+      .favourite-place-card-image {
+        width: 150px;
+        height: 100px;
+        margin-left: auto;
+        border-radius: 10px;
+      }
+      .card{
+        width: 150px;
+        height: 100px;
+        margin-left: auto;
+      }
+      .favourite-place-card-text-container {
+        margin-right: 15px;
+      }
+      .detailed-view-bg-container {
+        background-image: url("https://wallpapers.com/images/hd/dark-anime-scenery-wot9wg412s7h8yxa.jpg");
+        background-size: cover;
+        backdrop-filter: blur(5px);
+        padding:30px;
+      }
+      .detailed-view-heading {
+        color: #e4dcdc;
+        font-family: "Abril Fatface", serif;
+        font-size: 40px;
+        padding: 24px;
+        text-align: center;
+      }
+      .detailed-view-card-container {
+        background-color: rgba(22, 22, 22, 0.0);
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        margin: 24px;
+        height: 50%;
+      }
+      .detailed-view-card-heading {
+        color: #FFFFFF;
+        font-family: 'Poppins', sans-serif;
+        font-size: 25px;
+        border-bottom: solid white 1px;
+        display: inline-block;
+      }
+      .detailed-view-card-description {
+        color: #fdf3f3;
+        font-family: "Roboto";
+        font-size: 20px;
+        text-align: left;
+        
+        overflow: hidden; /* Hides any content overflowing horizontally */
+       
+      }
+      .detailed-view-card-text-container {
+        padding: 16px;
+        max-width: 100%; /* Prevents it from overflowing */
+        margin: 0 auto; /* Centers the container */
+        overflow: hidden; /* Hides anything outside the container */
+        border-radius: 10px; /* Optional: Adds rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow */
+        background-color: rgba(49, 49, 49, 0.4);
+        backdrop-filter: blur(2px);
+        border-radius: 20px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: inline-block;
+        
+      }
+      .detailed-view-card-keypoints{
+        color: #fdf3f3;
+        font-family: "Roboto";
+        font-size: 20px;
+        overflow-x: hidden;
+        padding: 16px;
+        max-width: 100%; /* Prevents it from overflowing */
+        margin: 0 auto; /* Centers the container */
+        overflow: hidden; /* Hides anything outside the container */
+        border-radius: 10px; /* Optional: Adds rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow */
+        background-color: rgba(49, 49, 49, 0.4);
+        backdrop-filter: blur(2px);
+        border-radius: 20px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: inline-block;
+      
+      }
+
+      .image-container {
+        max-width: 100%; /* Prevents it from overflowing */
+        margin: 0 auto; /* Centers the container */
+        overflow: hidden; /* Hides anything outside the container */
+        border-radius: 10px; /* Optional: Adds rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow */
+        background-color: rgba(49, 49, 49, 0.4);
+        backdrop-filter: blur(2px);
+        border-radius: 20px;
+        padding: 16px;
+        margin-bottom: 15px;
+        display: inline-block;
+      }
+      
+      .image-container img {
+        width: 100%; /* Ensures the image fills the container */
+        height: auto; /* Maintains aspect ratio */
+        display: block; /* Removes unwanted gaps below the image */
+        border-radius: 20px;
+      }
+
+      .youtube {
+        border-radius: 20px;
+        
+      }
+
+      .headingname {
+        max-width: 100%; /* Prevents it from overflowing */
+        margin: 0 auto; /* Centers the container */
+        overflow: hidden; /* Hides anything outside the container */
+        border-radius: 10px; /* Optional: Adds rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow */
+        background-color: rgba(49, 49, 49, 0.4);
+        backdrop-filter: blur(2px);
+        border-radius: 20px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: inline-block;
+      }
+
+
+      .description{
+        width: 100%; /* Ensures the image fills the container */
+        height: auto; /* Maintains aspect ratio */
+        display: block; /* Removes unwanted gaps below the image */
+        border-radius: 20px;
+      }
+      
+    </style>
+
+
+
+  </head>
+  <body> 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Have you watched this movie?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Your name</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Answer</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Send message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="sectionHome">
+      <div class="bg-container d-flex flex-column justify-content-center">
+        <div class="tourism-card">
+          <h1 class="main-heading"><div class = "mai">Welcome to My Anime Movie Sanctuary</div></h1>
+          <p class="paragraph">Within these frames lie worlds that resonate deep within my soul—stories that stir emotion, visuals that captivate the heart, and characters that never truly fade. These are the anime films that have left an indelible mark on me. 
+            Join me as I invite you to explore the beauty, passion, and artistry of their creation!</p>
+          <button class="button" onclick="display('sectionFavouritePlaces')">
+            Uncover My Picks
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sectionFavouritePlaces">
+      <div class="favourite-places-bg-container">
+        <div class="favourite-places-heading">
+          <div class="tex"><h1>Anime Films That Touch the Soul</h1>
+          </div>
+        <div
+          class="favourite-place-card-container d-flex flex-row"
+          onclick="display('sectionPythonDetailedView')"
+        >
+          <div>
+            <h1 class="favourite-place-card-heading">Your Name (Kimi no Na wa.)</h1>
+            <p class="favourite-place-card-description ">
+              "A breathtaking tale of love, destiny, and the mysterious thread that connects us all." 
+            </p>
+          </div>
+          <img
+            src="https://miro.medium.com/v2/resize:fit:1400/0*7IkY1LD1icfMAw1S.jpg"
+            class="favourite-place-card-image"
+          />
+        </div>
+
+        <div
+          class="favourite-place-card-container d-flex flex-row"
+          onclick="display('sectionC++DetailedView')"
+        >
+          <div>
+            <h1 class="favourite-place-card-heading">Weathering With You (Tenki no Koi)</h1>
+            <p class="favourite-place-card-description">
+              "A dazzling journey of love and sacrifice, where the sky holds secrets and dreams."
+            </p>
+          </div>
+          <img
+            src="https://www.theouterhaven.net/wp-content/uploads/2020/08/title.jpg"
+            class="favourite-place-card-image"
+          />
+        </div>
+
+
+        <div
+          class="favourite-place-card-container d-flex flex-row"
+          onclick="display('sectionClangDetailedView')"
+        >
+          <div>
+            <h1 class="favourite-place-card-heading">A Silent Voice (Koe no Katachi)</h1>
+            <p class="favourite-place-card-description">
+              "A moving story of redemption and connection, where words left unspoken carry the deepest emotions."
+            </p>
+          </div>
+          <img
+            src="https://takanodan.net/assets/images/posts/14-knk/cover.jpg"
+            class="favourite-place-card-image"
+          />
+        </div>
+        <div
+          class="favourite-place-card-container d-flex flex-row"
+          onclick="display('sectionJavaDetailedView')"
+        >
+          <div>
+            <h1 class="favourite-place-card-heading">I Want to Eat Your Pancreas (Kimi no Suizou wo Tabetai)</h1>
+            <p class="favourite-place-card-description">
+              "An unexpected friendship blossoms into a poignant story of life, love, and letting go."
+            </p>
+          </div>
+          <img
+            src="https://wallpapercave.com/wp/wp4089760.jpg"
+            class="favourite-place-card-image"
+          />
+        </div>
+        <div class="favourite-place-card-container d-flex flex-row" 
+            onclick="display('sectionCsharpDetailedView')">
+          <div>
+            <h1 class="favourite-place-card-heading">The Tunnel to Summer, the Exit of Goodbyes (Natsu e no Tonneru, Sayonara no Deguchi)</h1>
+            <p class="favourite-place-card-description">
+              "A poignant tale of love, sacrifice, and the choices that shape our lives, where a mysterious tunnel holds the power to rewrite destiny."
+
+
+            </p>
+          </div>
+          <img
+            src="https://img2.hulu.com/user/v3/artwork/ddc91ac4-e31d-4bb3-a634-65ccf6b2292e?base_image_bucket_name=image_manager&base_image=0c912666-33fb-43f2-9bb3-62c09d9db11c&size=1200x630&format=webp"
+            class="favourite-place-card-image"
+          />
+        </div>
+        <button class="btn btn-dark" onclick="display('sectionHome')">Back</button>
+      </div>
+    </div>
+  </div>
+
+    <div id="sectionPythonDetailedView">
+      <div class="detailed-view-bg-container">
+        
+        <div class="detailed-view-card-container">
+          <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators1"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="image-container">
+                <img
+                  src="https://miro.medium.com/v2/resize:fit:1400/0*7IkY1LD1icfMAw1S.jpg" width="100%" height="100%"
+                  alt="..."
+                />
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="image-container">
+                <img
+                  src="https://somoskudasai.com/wp-content/uploads/2022/04/portada_kimi-no-na-wa-6.jpg"
+                  class="d-block w-100"
+                  alt="..."
+                />
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="image-container">
+                <img
+                  src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/22d146f0-b2ab-487f-9513-c194507aaaaa/dbkt4a0-6b86cc48-45f2-41f3-82cf-c98df7bbf390.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIyZDE0NmYwLWIyYWItNDg3Zi05NTEzLWMxOTQ1MDdhYWFhYVwvZGJrdDRhMC02Yjg2Y2M0OC00NWYyLTQxZjMtODJjZi1jOThkZjdiYmYzOTAuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-aeONCruiw9VDz9PWvqRW_rQ2cOmUIslu3_1sqN0YUg"
+                  class="d-block w-100"
+                  alt="..."
+                />
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="image-container">
+                <div class = "youtube">
+                 <iframe width="1200px" height="650px" src="https://www.youtube.com/embed/xU47nhruN-Q?si=sf9RmAh-FSS-O4E4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleIndicators1"
+              role="button"
+              data-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleIndicators1"
+              role="button"
+              data-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="detailed-view-card-text-container">
+            <div class="detailed-view-card-heading">
+              <h1>Your Name (Kimi no Na wa.)</h1>
+            </div>
+            <div class="detailed-view-card-description">
+              
+              <br>A tale of two souls intertwined by fate, Your Name is a breathtaking journey through time and space. Taki and Mitsuha's quest to find each other is a masterful blend of romance, mystery, and a celebration of connections that defy logic. This movie is a love letter to the fleeting, yet profound moments that shape our lives.</div><br></div>
+            <div class="detailed-view-card-keypoints"><h3>A Moment to Remember </h3>
+              <P>Wherever you are in the world, I swear that I’ll find you again.</P>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-dark " onclick="display('sectionFavouritePlaces')">
+          Back
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Watched?
+        </button>
+      </div>
+      
+    </div>
+
+    <div id="sectionC++DetailedView">
+        <div class="detailed-view-bg-container">
+          
+          <div class="detailed-view-card-container">
+            <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators1"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="image-container">
+                  <img
+                    src="https://www.theouterhaven.net/wp-content/uploads/2020/08/title.jpg" width="100%" height="100%"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <img
+                    src="https://pyxis.nymag.com/v1/imgs/a35/319/573770d8b3de5c8392b9246a7d4eb9c141-15-weathering-with-you-2.rsocial.w1200.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <img
+                    src="https://wallpapers.com/images/hd/weathering-with-you-hodaka-in-rain-a6miygq1miqcxql0.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <div class = "youtube">
+                   <iframe width="1200px" height="650px" src="https://www.youtube.com/embed/Q6iK6DjV_iE?si=PXEYFMfllFu84g3w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+                  </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators1"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators1"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <div class="detailed-view-card-heading">
+                <h1>Weathering With You (Tenki no Ko)</h1>
+              </div>
+              <div class="detailed-view-card-description">
+                
+                <br>In a world where the skies seem to cry endlessly, Weathering With You brings us the story of Hodaka and Hina—a tale of love, sacrifice, and a fight to bring sunshine into each other’s lives. With stunning visuals and heartfelt emotions, this movie reminds us that even the smallest choices can change the world.</div><br></div>
+              <div class="detailed-view-card-keypoints"><h3>A Moment to Remember </h3>
+                <P>The weather can be crazy, but we’ll always find a way to shine together.</P>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-dark " onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Watched?
+          </button>
+        </div>
+        
+    </div>
+  
+    <div id="sectionClangDetailedView">
+        <div class="detailed-view-bg-container">
+          
+          <div class="detailed-view-card-container">
+            <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators1"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="image-container">
+                  <img
+                    src="https://takanodan.net/assets/images/posts/14-knk/cover.jpg" width="100%" height="100%"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <img
+                    src="https://a.storyblok.com/f/178900/1777x958/1694fb88f5/f97bccfb6867da83702656437fa37f951596235047_main.jpg/m/filters:quality(95)format(webp)"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <img
+                    src="https://miro.medium.com/v2/resize:fit:1400/1*jZBbkWPXGaNmeXtgl0NwUA.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <div class = "youtube">
+                   <iframe width="1200px" height="650px" src="https://www.youtube.com/embed/nfK6UgLra7g?si=5K-hO60OELdlA1QD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+                  </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators1"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators1"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <div class="detailed-view-card-heading">
+                <h1>A Silent Voice (Koe no Katachi)</h1>
+              </div>
+              <div class="detailed-view-card-description">
+                
+                <br>A powerful story of redemption and forgiveness, A Silent Voice delves into the complexities of human connection. Through Shoya’s journey, the film sheds light on the scars left by bullying, the courage it takes to mend broken bonds, and the beauty of finding hope in the most unexpected places.</div><br></div>
+              <div class="detailed-view-card-keypoints"><h3>A Moment to Remember </h3>
+                <P>If I could live my life all over again, I’d want to meet you all over again.</P>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-dark " onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Watched?
+          </button>
+        </div>
+        
+    </div>
+
+    <div id="sectionJavaDetailedView">
+        <div class="detailed-view-bg-container">
+          
+          <div class="detailed-view-card-container">
+            <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators1"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="image-container">
+                  <img
+                    src="https://wallpapercave.com/wp/wp4089760.jpg" width="100%" height="100%"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <img
+                    src="https://s1.dmcdn.net/v/Wax-c1d5-c-ODLsP8/x720"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <img
+                    src="https://static.wikia.nocookie.net/kimi-no-suizou-o-tabetai/images/c/c9/Sakura_Yamauchi.png/revision/latest?cb=20210211180616"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <div class = "youtube">
+                   <iframe width="1200px" height="650px" src="https://www.youtube.com/embed/MmoBvmJA9XI?si=7OjxjRR25TOIMoTc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+                  </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators1"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators1"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <div class="detailed-view-card-heading">
+                <h1>I Want to Eat Your Pancreas (Kimi no Suizou wo Tabetai)</h1>
+              </div>
+              <div class="detailed-view-card-description">
+                
+                <br>A story of fleeting time and the power of an unexpected friendship, I Want to Eat Your Pancreas explores the fragility of life and the beauty of living it to the fullest. Sakura and Haruki's bittersweet connection is a reminder to cherish every moment, even if it’s destined to end.</div><br></div>
+              <div class="detailed-view-card-keypoints"><h3>A Moment to Remember </h3>
+                <P>If you had a time machine, where would you go? For me, the answer is simple—here, now, with you.</P>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-dark " onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Watched?
+          </button>
+        </div>
+        
+    </div>
+
+
+    <div id="sectionCsharpDetailedView">
+        <div class="detailed-view-bg-container">
+          
+          <div class="detailed-view-card-container">
+            <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators1"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="image-container">
+                  <img
+                    src="https://img2.hulu.com/user/v3/artwork/ddc91ac4-e31d-4bb3-a634-65ccf6b2292e?base_image_bucket_name=image_manager&base_image=0c912666-33fb-43f2-9bb3-62c09d9db11c&size=1200x630&format=webp" width="100%" height="100%"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <img
+                    src="https://wallpapercave.com/wp/wp13392372.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <img
+                    src="https://wallpapercave.com/wp/wp13392382.png"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-container">
+                  <div class = "youtube">
+                   <iframe width="1200px" height="650px" src="https://www.youtube.com/embed/EhPu7arYYYo?si=Thsi0i7ODTget2Kz" title="YouTube video player" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+                  </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators1"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators1"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="detailed-view-card-text-container">
+              <div class="detailed-view-card-heading">
+                <h1>The Tunnel to Summer, the Exit of Goodbyes (Natsu e no Tonneru, Sayonara no Deguchi)</h1>
+              </div>
+              <div class="detailed-view-card-description">
+                
+                <br>This poignant tale captures the magic and pain of love and loss. Kaoru and Anzu’s journey through the mysterious Urashima Tunnel challenges their hearts and minds, exploring what it truly means to say goodbye and embrace the future.</div><br></div>
+              <div class="detailed-view-card-keypoints"><h3>A Moment to Remember </h3>
+                <P>If I could make a wish, it would be to stay in this moment forever—but life doesn’t wait, does it?</P>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-dark " onclick="display('sectionFavouritePlaces')">
+            Back
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Watched?
+          </button>
+        </div>
+        
+    </div>
+  
+
+
+
+   <script>
+      function display(sectionId) {
+        const sections = document.querySelectorAll("div[id^='section']");
+        sections.forEach((section) => {
+          section.style.display = "none";
+        });
+        const selectedSection = document.getElementById(sectionId);
+        if (selectedSection) {
+          selectedSection.style.display = "block";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        display("sectionHome");
+      });
+   </script>
+  </body>
+</html>
